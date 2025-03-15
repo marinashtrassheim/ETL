@@ -1,7 +1,0 @@
-{
-  "names": ["Purrsloud", "Barksalot", "Meowsalot"],
-  "species": ["Cat", "Dog", "Cat"],
-  "favFoods": ["wet food", "dry food", "<strong>any</strong> food", "tuna", "catnip", "celery"],
-  "birthYear": [2016, 2008, 2012],
-  "photo": ["https://learnwebcode.github.io/json-example/images/cat-2.jpg", "https://learnwebcode.github.io/json-example/images/dog-1.jpg", "https://learnwebcode.github.io/json-example/images/cat-1.jpg"]
-}

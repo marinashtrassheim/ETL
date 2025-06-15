@@ -33,3 +33,45 @@ WITH (
     KEY_BLOOM_FILTER = DISABLED
 );
 ```
+2. Скачиваем файл с данными и разбиваем его на части с помощью команды в консоли
+
+```
+split -l 10000 /Users/marinamarina/Downloads/transactions_v2.csv /Users/marinamarina/Downloads/transactions_part_
+```
+3. С помощью bash скрипта переносим данные в Yandex Cloud
+
+```
+#!/bin/bash
+
+counter=0
+for file in /Users/marinamarina/Downloads/transactions_part_*; do
+  echo "Processing $file..."
+  
+  # Для первого файла пропускаем 1 строку (заголовок), для остальных - 0
+  if [ $counter -eq 0 ]; then
+    skip_rows=1
+  else
+    skip_rows=0
+  fi
+  
+  ydb --endpoint "grpcs://ydb.serverless.yandexcloud.net:2135" \
+      --database "/ru-central1/b1gpmcf3pbaq8qhmo2pu/etnss6b7au3eltqohr1v" \
+      --sa-key-file "/Users/marinamarina/Downloads/authorized_key.json" \
+      import file csv \
+      --path transactions_v2 \
+      --delimiter "," \
+      --skip-rows $skip_rows \
+      --null-value "" \
+      "$file"
+  
+  if [ $? -eq 0 ]; then
+    echo "Success: $file"
+    ((counter++))
+  else
+    echo "Failed: $file"
+    exit 1
+  fi
+done
+```
+Результат -> Данные в transactions_v2
+

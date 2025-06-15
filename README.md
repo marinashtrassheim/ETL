@@ -75,3 +75,5 @@ done
 ```
 Результат -> Данные в transactions_v2
 
+4. Создаем Object Storage
+5. Создаем Data Transfer, указывая источником ybd, приемником Object Storage и запускаем процесс трансфера

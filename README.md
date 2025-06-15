@@ -11,8 +11,8 @@ transactions_v2 
 
 1. Создаем ybd в Yandex Cloud + создаем таблицу transactions_v2
 
-   ''
-   CREATE TABLE transactions_v2
+```
+CREATE TABLE transactions_v2
 (
     `msno` String,
     `payment_method_id` Int32,
@@ -32,4 +32,4 @@ WITH (
     AUTO_PARTITIONING_MIN_PARTITIONS_COUNT = 1,
     KEY_BLOOM_FILTER = DISABLED
 );
-   ''
+```

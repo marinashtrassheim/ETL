@@ -75,3 +75,6 @@ done
 2. Скрипт для создания DAG -> файл Data-Processing-DAG.py помещаем в созданный бакет в папку dags
 3. PySpark задание -> файл create-table.py помещаем в созданный бакет в папку skripts
 4. Запускаем DAG
+
+## Задание 3
+Файлы со скриптами Rear_kafka.py Write_Kafka.py
